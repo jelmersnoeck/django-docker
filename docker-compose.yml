@@ -1,0 +1,22 @@
+version: '2'
+services:
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+  db:
+    image: postgres
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    environment:
+      - VIRTUAL_HOST=django-docker.dev
+    volumes:
+      - ./code:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - proxy
+      - db
