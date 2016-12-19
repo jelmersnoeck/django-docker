@@ -21,6 +21,18 @@ $ docker exec djangodocker_web_1 python manage.py hello-world <id>
 
 `<id>` represents the object id from the admin panel.
 
+**Note:** this can only be done after setting up and running the application.
+
+## Tests
+
+There are a few small tests for the application, they can be run as follows:
+
+```
+$ docker exec djangodocker_web_1 python manage.py test people
+```
+
+**Note:** this can only be done after setting up and running the application.
+
 ## Running the application.
 
 ### Prerequisites
@@ -102,3 +114,9 @@ A superuser allows you to log in to the admin section and create new people.
 ```
 $ docker exec -it djangodocker_web_1 python manage.py createsuperuser
 ```
+
+### Admin
+
+Once the application is set up (migrations + superuser), the admin is available
+at [http://django-docker.dev/admin](http://django-docker.dev/admin). You can now
+login with your created superuser.

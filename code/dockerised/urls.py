@@ -16,6 +16,9 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
+from people import views as people
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^hello-world/(?P<person_id>[0-9]+)/$', people.detail, name='hello-world'),
 ]
