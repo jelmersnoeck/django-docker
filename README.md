@@ -11,7 +11,6 @@ Run the project:
 
 ```
 $ make bootstrap
-$ docker-compose up
 ```
 
 To automatically execute the migrations and set up the superuser, run the
@@ -27,8 +26,7 @@ service fails to launch properly the first time you run the application. This
 causes the proxy to fail as well. To go around this,we'll restart the services.
 
 ```
-$ docker-compose stop
-$ docker-compose up
+$ docker-compose restart
 ```
 
 You can now visit the application at `http://django-docker.dev/hello-world/<id>`

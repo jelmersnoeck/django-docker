@@ -3,9 +3,10 @@ bootstrap:
 	sudo mkdir -p /etc/resolver
 	echo 'nameserver 127.0.0.1' | sudo tee /etc/resolver/dev
 	echo 'port 53535' | sudo tee -a /etc/resolver/dev
+	docker-compose up
 
 setup:
-	docker exec djangodocker_web_1 python manage.py migrate
-	docker exec -it djangodocker_web_1 python manage.py createsuperuser
+	docker-compose exec web python manage.py migrate
+	docker-compose exec web python manage.py createsuperuser
 
 PHONY: bootstrap setup
